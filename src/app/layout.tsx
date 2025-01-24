@@ -20,10 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning>
-      <title>TaskMaster - Your Ultimate To-Do List ✨</title>
+      <title>TaskBooster - Your Ultimate To-Do List ✨</title>
       <meta
           name="description"
-          content="Organize your tasks efficiently with TaskMaster, the ultimate to-do list app. Manage tasks, set priorities, and stay productive every day."
+          content="Organize your tasks efficiently with TaskBooster, the ultimate to-do list app. Manage tasks, set priorities, and stay productive every day."
       />
       <meta
           name="keywords"
