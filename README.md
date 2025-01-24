@@ -1,6 +1,6 @@
 
 
-## 🎯 Task Master
+## 🎯 Task Booster
 
 To-do list website that can manage your task, daily planner,and stay your productivity. And also, I made this website inspired by Notion.
 
@@ -15,7 +15,7 @@ To-do list website that can manage your task, daily planner,and stay your produc
 Clone the project
 
 ```bash
-  git clone https://github.com/DanarCahyadi12/task-master.git
+  git clone https://github.com/DanarCahyadi12/task-booster.git
 ```
 
 Go to the project directory
@@ -38,5 +38,5 @@ Start the server
 
 
 ## 🚀 Demo
- [``Click here``](https://task-master.vercel.app)
+ [``Click here``](https://task-booster.vercel.app)
 
