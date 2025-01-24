@@ -4,7 +4,7 @@ export function getFromLocalStorage<T>(key: string): T | Block {
     const item = localStorage.getItem(key);
     const defaultValue: Block = {
         header: {
-            title: 'Weekly to-do list✨',
+            title: '',
             bannerURL: ''
         },
         elements: [
