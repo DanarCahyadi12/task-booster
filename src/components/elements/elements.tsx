@@ -1,9 +1,8 @@
-
-import { Grid, GridItem } from "@chakra-ui/react"
-import { addText, addToDo, changeElement, changeToText, deleteElement, handleFocus, setDisableOption, setLocalStorageItem, setShowOption, updateValue } from "@/utils/utils"
+import { Grid, GridItem} from "@chakra-ui/react"
+import { addText, addToDo, changeToText, deleteElement, getFromLocalStorage, handleFocus, setDisableOption, setLocalStorageItem, setShowOption, updateValue } from "@/utils/utils"
 import { useBlockElementStore } from "@/store/useBlockElementStore"
 import { MenuComponent } from "../menu/menu"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Element } from "./element"
 import { useDebouncedCallback } from "use-debounce"
 
@@ -12,7 +11,6 @@ export const Elements = ({ elementRef, titleRef }:
     elementRef: React.RefObject<HTMLDivElement[]>,
     titleRef: React.RefObject<HTMLHeadingElement | null>,
   }) => {
-
   const [menuItems] = useState<MenuItems[]>([
     {
       imagePath: '/TEXT.png',
@@ -45,6 +43,12 @@ export const Elements = ({ elementRef, titleRef }:
       description: 'Create your tasks.'
     },
   ])
+
+  useEffect(() => {
+    const data = getFromLocalStorage<Block>('block-elements')
+    updateBlock(data);
+  },[])
+
   const { block, updateBlock } = useBlockElementStore()
   const debouncedUpdateBlock = useDebouncedCallback(
     (block: Block) => {
@@ -80,7 +84,7 @@ export const Elements = ({ elementRef, titleRef }:
 
   const handleAddText = (type: string, index: number) => {
     const updatedBlock = addText(block, type, index)
-    // console.log('updated block: ', updatedBlock)
+  
     if (updatedBlock) {
       updateBlock(updatedBlock)
       debouncedUpdateBlock(updatedBlock)
@@ -185,6 +189,7 @@ export const Elements = ({ elementRef, titleRef }:
 
   return (
     <>
+    
       {block.elements.map((element: ContentElement, index: number) => {
         return (
           <Grid
@@ -196,7 +201,6 @@ export const Elements = ({ elementRef, titleRef }:
             gapX={{lg: 2, base: 1}}
             gapY={2}
             key={element.data.id}
-            
             width={'inherit'}
             templateColumns={'40px 2fr'}
             onMouseEnter={() => handleShowOption(index)}
@@ -207,7 +211,6 @@ export const Elements = ({ elementRef, titleRef }:
                 <MenuComponent elementRef={elementRef} items={menuItems} index={index} />}
             </GridItem>
             <GridItem
-              // bgColor={'ActiveBorder'}
               lineHeight={1}
               wordBreak={'break-word'}
               onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => handleKeyBoardEvent(e, index)}

@@ -1,4 +1,4 @@
-import { Container, Image } from "@chakra-ui/react"
+import { Container } from "@chakra-ui/react"
 
 
 export const Header = () => {

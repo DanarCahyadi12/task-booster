@@ -40,9 +40,8 @@ export const Title = ({ elementRef, titleRef }: { elementRef: React.RefObject<HT
 
 
     }
-
     return (
-        <>
+        <> 
             <Heading
                 color={block.header.title === '' ? 'gray': 'inherit'}
                 _empty={{
@@ -65,6 +64,8 @@ export const Title = ({ elementRef, titleRef }: { elementRef: React.RefObject<HT
                 fontSize={{lg: '4xl', base: '2xl'}}
                 marginLeft={{lg: 12, base: 9}} 
                 />
+
+            
 
         </>
     )
