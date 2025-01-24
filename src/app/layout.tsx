@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Provider } from "@/components/ui/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,9 +24,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <title>TaskMaster - Your Ultimate To-Do List ✨</title>
+      <meta
+          name="description"
+          content="Organize your tasks efficiently with TaskMaster, the ultimate to-do list app. Manage tasks, set priorities, and stay productive every day."
+      />
+      <meta
+          name="keywords"
+          content="to-do list app, task management, productivity, task organizer, daily planner"
+      />
+      <meta name="author" content="Danar Cahyadi" />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Provider>
         {children}
+        </Provider>
       </body>
     </html>
   );

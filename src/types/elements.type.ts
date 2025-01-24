@@ -1,0 +1,1 @@
+type ContentElement = SimpleText | ToDo | BigHeading | MediumHeading | SmallHeading
