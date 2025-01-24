@@ -27,7 +27,7 @@ export default function RootLayout({
       />
       <meta
           name="keywords"
-          content="to-do list app, task management, productivity, task organizer, daily planner"
+          content="to-do list app, task management, productivity, task organizer, daily planner, task booster, TaskBooster"
       />
       <meta name="author" content="Danar Cahyadi" />
       <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
