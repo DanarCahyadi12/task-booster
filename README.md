@@ -21,7 +21,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd task-master
+  cd task-booster
 ```
 
 Install dependencies
