@@ -217,7 +217,9 @@ export const handleFocus = (ref: React.RefObject<HTMLDivElement[]>, index: numbe
                     range.collapse(false); 
                     selection.removeAllRanges();
                     selection.addRange(range);
-                    editedElement.focus(); 
+                    editedElement.focus({ preventScroll: true });
+
+                    editedElement.scrollIntoView({ behavior: "smooth", block: "nearest" });
                 }
                 
             }   

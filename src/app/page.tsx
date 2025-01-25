@@ -15,9 +15,8 @@ export default function Home() {
       <Container width={{sm: 'full', lg: '6/12', md: '7/12'}} margin={'auto'} marginTop={10}>
       <Title elementRef={elementRef} titleRef={titleRef}/>
         <VStack 
-
          marginTop={{base: 5, lg: 5}}
-         width={{lg: 'full', md: 'full', base: '90nvw'}}
+         width={{lg: 'full', md: 'full', base: '90vw'}}
          gapY={{base: 3, lg: 4}}
          align={'start'} 
           >

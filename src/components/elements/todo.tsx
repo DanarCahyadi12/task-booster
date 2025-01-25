@@ -51,7 +51,6 @@ export const ToDo = ({ index }: { index: number }) => {
                 variant={'subtle'}
             />
             <Text
-                marginTop={1}
                 textDecoration={(block.elements[index] as ToDo).data.isChecked ? 'line-through': 'none'}
                 color={block.elements[index].data.value === '' ? 'gray' : 'inherit'}
                 className="edit"

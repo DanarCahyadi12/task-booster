@@ -193,25 +193,25 @@ export const Elements = ({ elementRef, titleRef }:
       {block.elements.map((element: ContentElement, index: number) => {
         return (
           <Grid
+            
             ref={(refElement: HTMLDivElement) => {
               if (refElement && !elementRef.current.includes(refElement)) {
                 elementRef.current[index] = refElement
               }
             }}
             gapX={{lg: 2, base: 1}}
-            gapY={2}
+            gapY={1}
             key={element.data.id}
             width={'inherit'}
             templateColumns={'40px 2fr'}
             onMouseEnter={() => handleShowOption(index)}
             onMouseLeave={() => handleDisableOption(index)}
           >
-            <GridItem justifyItems={'end'} >
+            <GridItem justifyItems={'end'} alignItems={'center'}>
               {element.event.onHover &&
                 <MenuComponent elementRef={elementRef} items={menuItems} index={index} />}
             </GridItem>
             <GridItem
-              lineHeight={1}
               wordBreak={'break-word'}
               onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => handleKeyBoardEvent(e, index)}
               onClick={() => handleFocus(elementRef, index)}
