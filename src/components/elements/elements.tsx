@@ -1,4 +1,4 @@
-import { Grid, GridItem} from "@chakra-ui/react"
+import { Grid, GridItem } from "@chakra-ui/react"
 import { addText, addToDo, changeToText, deleteElement, getFromLocalStorage, handleFocus, setDisableOption, setLocalStorageItem, setShowOption, updateValue } from "@/utils/utils"
 import { useBlockElementStore } from "@/store/useBlockElementStore"
 import { MenuComponent } from "../menu/menu"
@@ -47,7 +47,7 @@ export const Elements = ({ elementRef, titleRef }:
   useEffect(() => {
     const data = getFromLocalStorage<Block>('block-elements')
     updateBlock(data);
-  },[])
+  }, [])
 
   const { block, updateBlock } = useBlockElementStore()
   const debouncedUpdateBlock = useDebouncedCallback(
@@ -72,11 +72,19 @@ export const Elements = ({ elementRef, titleRef }:
       case 'ArrowDown':
         handleArrowDown(index);
         break
-      case 'Backspace':
-        handleDeleteElement(index);
+        case 'Backspace':
+          if (block.elements[index].data.value === '' && block.elements.length > 1) {
+            e.preventDefault(); // Stop default Backspace behavior
+            handleDeleteElement(index);
+          }
+          break;
+        case 'Delete':
+          if (block.elements[index].data.value === '' && block.elements.length > 1) {
+              e.preventDefault(); // Stop default Backspace behavior
+              handleDeleteElement(index);
+            }
         break;
-      case 'Delete':
-        handleDeleteElement(index);
+      default:
         break;
 
     }
@@ -84,7 +92,7 @@ export const Elements = ({ elementRef, titleRef }:
 
   const handleAddText = (type: string, index: number) => {
     const updatedBlock = addText(block, type, index)
-  
+
     if (updatedBlock) {
       updateBlock(updatedBlock)
       debouncedUpdateBlock(updatedBlock)
@@ -160,27 +168,17 @@ export const Elements = ({ elementRef, titleRef }:
     const element = block.elements[index]
     if (element.data.value !== '' || block.elements.length === 1) return;
 
-    const type = element.data.type
-
-    //if deleted block is to-do, change into text
-    if (type === 'to-do') {
-      const updatedBlock = changeToText(block, 'text', index);
-      updateBlock(updatedBlock)
-      setTimeout(() => {
-        handleFocus(elementRef, index);
-      }, 0)
-
-      return;
-
-    }
-
-    const updatedBlock = deleteElement(block, index)
-    if (updatedBlock && updatedBlock !== block) { // Check for actual changes
+    const focusIndex = index === 0 ? index + 1 : index - 1;
+    handleFocus(elementRef, focusIndex);
+    // Delete the element
+    const updatedBlock = deleteElement(block, index);
+    if (updatedBlock && updatedBlock !== block) {
       updateBlock(updatedBlock); // Update Zustand store
+
+      // Update elementRef to reflect the new state
       elementRef.current = elementRef.current.filter((_, i) => i !== index);
-      setTimeout(() => {
-        index === 0 ? handleFocus(elementRef, index) : handleFocus(elementRef, index - 1)
-      }, 0)
+
+
     }
 
   }
@@ -189,29 +187,30 @@ export const Elements = ({ elementRef, titleRef }:
 
   return (
     <>
-    
+
       {block.elements.map((element: ContentElement, index: number) => {
         return (
           <Grid
-            
             ref={(refElement: HTMLDivElement) => {
               if (refElement && !elementRef.current.includes(refElement)) {
                 elementRef.current[index] = refElement
               }
             }}
-            gapX={{lg: 2, base: 1}}
-            gapY={1}
+            gapX={{ lg: 2, base: 1 }}
+            gapY={0}
             key={element.data.id}
             width={'inherit'}
             templateColumns={'40px 2fr'}
             onMouseEnter={() => handleShowOption(index)}
             onMouseLeave={() => handleDisableOption(index)}
           >
-            <GridItem justifyItems={'end'} alignItems={'center'}>
+            <GridItem justifyItems={'end'}>
               {element.event.onHover &&
                 <MenuComponent elementRef={elementRef} items={menuItems} index={index} />}
             </GridItem>
             <GridItem
+              overflow={'hidden'}
+              lineHeight={1}
               wordBreak={'break-word'}
               onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => handleKeyBoardEvent(e, index)}
               onClick={() => handleFocus(elementRef, index)}
