@@ -175,9 +175,23 @@ export const addToDo = (blockElements: Block, type: string, index: number) => {
 
 
 export const setShowOption = (blockElements: Block, index: number) => {
-    const updatedElements: Block = blockElements;
-    updatedElements.elements[index].event.onHover = true;
-    return updatedElements;
+    let updatedBlock: Block = blockElements;
+    updatedBlock.elements[index].event.onHover = true;
+    const updatedElements = updatedBlock.elements.map((element: ContentElement, indexElement: number) => {
+        if(index !== indexElement) {
+            element.event.onHover = false;
+            return element;
+        }
+
+        return element
+    })
+
+    updatedBlock = {
+        ...blockElements,
+        elements: updatedElements
+    }
+
+    return updatedBlock;
 }
 
 export const setDisableOption = (blockElements: Block, index: number) => {
