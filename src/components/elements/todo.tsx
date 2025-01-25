@@ -49,7 +49,6 @@ export const ToDo = ({ index }: { index: number }) => {
                 onChange={(e: FormEvent<HTMLLabelElement>) => handleChecked(e)}
                 checked={(block.elements[index] as ToDo).data.isChecked}
                 variant={'subtle'}
-                size={'sm'}
             />
             <Text
                 textDecoration={(block.elements[index] as ToDo).data.isChecked ? 'line-through': 'none'}
