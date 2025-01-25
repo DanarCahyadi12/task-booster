@@ -61,7 +61,7 @@ export const Title = ({ elementRef, titleRef }: { elementRef: React.RefObject<HT
                         titleRef.current = element
                     }
                 }}
-                fontSize={{lg: '4xl', base: '3xl'}}
+                fontSize={{lg: '4xl', base: '2xl',sm: '3xl' }}
                 marginLeft={{lg: 12, base: 9}} 
                 />
 
