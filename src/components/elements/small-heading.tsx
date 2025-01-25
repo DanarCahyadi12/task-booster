@@ -50,7 +50,7 @@ export const SmallHeading = ({index}: {
         }}
         className="edit"
         fontWeight={'bold'}
-        fontSize={{lg: 17, base: 14}}
+        fontSize={{lg: 20, base: 18}}
         tabIndex={0}
         width={'auto'}
         outline={'none'}

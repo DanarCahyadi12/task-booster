@@ -50,7 +50,7 @@ export const BigHeading = ({index}: {
         }}
         className="edit"
         fontWeight={'bold'}
-        fontSize={{lg: 23, base: 20}}
+        fontSize={{lg: 26, base: 23}}
         tabIndex={0}
         width={'full'}
         outline={'none'}

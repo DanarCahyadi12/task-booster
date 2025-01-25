@@ -18,7 +18,7 @@ export default function Home() {
 
          marginTop={{base: 5, lg: 5}}
          width={{lg: 'full', md: 'full', base: '90nvw'}}
-         gapY={{base: 2, lg: 4}}
+         gapY={{base: 3, lg: 4}}
          align={'start'} 
           >
           <Elements elementRef={elementRef} titleRef={titleRef}  />

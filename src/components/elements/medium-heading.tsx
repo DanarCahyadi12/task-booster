@@ -50,7 +50,7 @@ export const MediumHeading = ({index}: {
         }}
         className="edit"
         fontWeight={'bold'}
-        fontSize={{base: 16, lg:19}}
+        fontSize={{base: 20, lg:23}}
         tabIndex={0}
         width={'auto'}
         outline={'none'}

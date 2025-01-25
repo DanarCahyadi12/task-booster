@@ -51,6 +51,7 @@ export const ToDo = ({ index }: { index: number }) => {
                 variant={'subtle'}
             />
             <Text
+                marginTop={1}
                 textDecoration={(block.elements[index] as ToDo).data.isChecked ? 'line-through': 'none'}
                 color={block.elements[index].data.value === '' ? 'gray' : 'inherit'}
                 className="edit"
@@ -64,7 +65,7 @@ export const ToDo = ({ index }: { index: number }) => {
                         opacity: 0.5
                     }
                 }}
-                fontSize={{base: 13, lg: 'inherit'}}
+                fontSize={{base: 14, lg: 'inherit'}}
                 onInput={handleOnChangeValue}
                 ref={(e: HTMLParagraphElement) => { if (e) textRef.current = e }}
                 contentEditable
