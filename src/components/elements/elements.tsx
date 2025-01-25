@@ -214,6 +214,7 @@ export const Elements = ({ elementRef, titleRef }:
               lineHeight={1}
               wordBreak={'break-word'}
               onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => handleKeyBoardEvent(e, index)}
+              onClick={() => handleFocus(elementRef, index)}
             >
               <Element element={element}
                 index={index} />
