@@ -28,7 +28,7 @@ export default function Home() {
       <Title elementRef={elementRef} titleRef={titleRef}/>
         <VStack 
          marginBottom={{lg: 10, base: 8}}
-         marginTop={{base: 5, lg: 6}}
+         marginTop={{base: 5, lg: 5}}
          width={{lg: 'full', md: 'full', base: '90vw'}}
          gapY={{base: 3, lg: 4}}
          align={'start'} 
