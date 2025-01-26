@@ -167,7 +167,6 @@ export const Elements = ({ elementRef, titleRef }:
   const handleDeleteElement = (index: number) => {
     const element = block.elements[index]
     if (element.data.value !== '' || block.elements.length === 1) return;
-
     const focusIndex = index === 0 ? index + 1 : index - 1;
     handleFocus(elementRef, focusIndex);
     // Delete the element
@@ -177,7 +176,7 @@ export const Elements = ({ elementRef, titleRef }:
 
       // Update elementRef to reflect the new state
       elementRef.current = elementRef.current.filter((_, i) => i !== index);
-
+      debouncedUpdateBlock(updatedBlock)
 
     }
 
