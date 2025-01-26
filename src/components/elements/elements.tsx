@@ -203,7 +203,7 @@ export const Elements = ({ elementRef, titleRef }:
             onMouseEnter={() => handleShowOption(index)}
             onMouseLeave={() => handleDisableOption(index)}
           >
-            <GridItem justifyItems={'end'} >
+            <GridItem justifyItems={'end'} position={'relative'}>
               {element.event.onHover &&
                 <MenuComponent elementRef={elementRef} items={menuItems} index={index} />}
             </GridItem>
