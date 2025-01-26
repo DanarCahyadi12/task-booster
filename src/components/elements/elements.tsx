@@ -197,14 +197,13 @@ export const Elements = ({ elementRef, titleRef }:
               }
             }}
             gapX={{ lg: 2, base: 1 }}
-            gapY={0}
             key={element.data.id}
             width={'inherit'}
             templateColumns={'40px 2fr'}
             onMouseEnter={() => handleShowOption(index)}
             onMouseLeave={() => handleDisableOption(index)}
           >
-            <GridItem justifyItems={'end'}>
+            <GridItem justifyItems={'end'} >
               {element.event.onHover &&
                 <MenuComponent elementRef={elementRef} items={menuItems} index={index} />}
             </GridItem>

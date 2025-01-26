@@ -12,10 +12,22 @@ export default function Home() {
   return (
     <>
       <Header/>
-      <Container width={{sm: 'full', lg: '6/12', md: '7/12'}} margin={'auto'} marginTop={10}>
+      <Container
+       height={{lg: 'auto', base: '100vh'}}
+       width={{sm: 'full', lg: '6/12', md: '7/12'}} 
+       margin={'auto'} marginTop={10}
+       overflow={'auto'}
+       css={{
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+        "scrollbarWidth": "none", // Firefox
+        "msOverflowStyle": "none", // Edge
+      }}
+       >
       <Title elementRef={elementRef} titleRef={titleRef}/>
         <VStack 
-        marginBottom={{lg: 10, base: 8}}
+         marginBottom={{lg: 10, base: 8}}
          marginTop={{base: 5, lg: 6}}
          width={{lg: 'full', md: 'full', base: '90vw'}}
          gapY={{base: 3, lg: 4}}

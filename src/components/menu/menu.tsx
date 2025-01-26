@@ -1,7 +1,7 @@
 import { useBlockElementStore } from "@/store/useBlockElementStore"
 import { changeElement, handleFocus } from "@/utils/utils"
-import { MenuRoot, MenuTrigger, MenuContent, MenuItem, Container, Text, Box, HStack, Image, MenuItemGroup, MenuSeparator, SelectOpenChangeDetails, MenuSelectionDetails, Float } from "@chakra-ui/react"
-import React from "react"
+import { MenuRoot, MenuTrigger, MenuContent, MenuItem, Container, Text, Box, HStack, Image, MenuItemGroup, MenuSeparator, SelectOpenChangeDetails, MenuSelectionDetails, Float, MenuContextTrigger } from "@chakra-ui/react"
+import React, { useEffect, useState } from "react"
 
 import { PiDotsNineLight } from "react-icons/pi"
 
@@ -17,15 +17,16 @@ export const MenuComponent = ({elementRef, items, index }: { elementRef: React.R
 
 
 
+
+  
   return (
     <MenuRoot
       size={{base: 'md', sm: 'sm'}}
       onSelect={(e: MenuSelectionDetails) => handleSelectedItems(e)}>
       <MenuTrigger asChild>
-        <PiDotsNineLight cursor={'pointer'} />
+        <PiDotsNineLight cursor={'pointer'}/>
       </MenuTrigger>
-      <Float placement={'middle-start'} marginLeft={{base: 100, lg: 50}} zIndex={'modal'}>
-        <MenuContent padding={1} minW={'13vw'} marginTop={'100%'}>
+        <MenuContent position={'absolute'} marginLeft={2} padding={1} minW={'13vw'}>
           <MenuItemGroup padding={2}>
             <Text fontSize={12} fontWeight={'bold'}>Turn into element.</Text>
           </MenuItemGroup>
@@ -53,7 +54,6 @@ export const MenuComponent = ({elementRef, items, index }: { elementRef: React.R
             })}
           </MenuItemGroup>
         </MenuContent>
-      </Float>
     </MenuRoot>
   )
 }
