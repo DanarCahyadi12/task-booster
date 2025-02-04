@@ -9,6 +9,7 @@ To-do list website that can manage your task, daily planner,and stay your produc
 
 ## 👩🏿‍💻 Tech Stack
 - Next JS
+- Chakra UI
 
 ## 📈 Run Locally
 
